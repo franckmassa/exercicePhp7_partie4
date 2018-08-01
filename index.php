@@ -1,31 +1,43 @@
+<?php
+//Lancement de la fonction avec les paramètres demandés
+ function identity($gender, $age){
+   //Première condition si l'age est bien > 0
+   if($age > 0){
+    //Condition pour le sexe, soit = homme soit = femme
+     if($gender == 'femme' || $gender == 'homme'){
+       //Succession de condition pour tester le genre et la majorité
+       if($gender == 'homme' && $age > 18 ){
+         $message = 'Vous êtes un homme majeur';
+       } elseif($gender == 'homme' && $age < 18 ){//Deusieme condition si homme < 18 ans
+         $message = 'Vous êtes un homme mineur';
+       } elseif($gender == 'femme' && $age > 18){//Troisieme condition si femme > 18 ans
+         $message = 'Vous êtes une femme majeure';
+       } else{//Quatrième condition si femme < 18 ans
+         $message = 'Vous êtes une femme mineure';
+       }
+     } else {
+       //Affichage non binaire si vous ne vous sentez pas homme ou femme
+       $message = 'Vous êtes non-binaire';
+     }
+   } else {
+     //Affichage si age < 0
+     $message = 'Vous n\'êtes pas né';
+   }
+   return $message;
+ }
+?>
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <title>Exercice7</title>
-</head>
-<body>
-  <p>
-    <?php
-    //Déclaration de la fonction info
-    function info($age, $gender){
-      //Conditions pour retourner le message selon l'age et le genre
-      if($age >= 18 && $gender == 'homme'){
-        return 'Vous êtes un homme majeur';
-      } elseif($age < 18 && $age > 0 && $gender == 'homme'){
-        return 'Vous êtes un homme mineur';
-      } elseif($age >= 18 && $gender == 'femme'){
-        return 'Vous êtes une femme majeur';
-      } elseif($age < 18 && $age > 0 && $gender == 'femme'){
-        return 'Vous êtes une femme mineur';
-      } else {
-        //Affichage d'alerte lié à un age invalide
-        echo 'Age invalide';
-      }
-    }
-    //Affichage de l'age et le genre
-    echo info(25, 'femme');
-    ?>
-  </p>
-</body>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercice 7</title>
+  </head>
+  <body>
+    <p>
+<?=
+//Affectation des valeurs aux variable-paramètres
+identity('homme',26);
+?>
+    </p>
+  </body>
 </html>
